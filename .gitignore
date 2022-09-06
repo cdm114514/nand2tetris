@@ -1,0 +1,5 @@
+tools/
+*.zip
+*.cmp
+*.out
+*.tst
