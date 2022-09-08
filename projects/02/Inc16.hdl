@@ -14,4 +14,55 @@ CHIP Inc16 {
 
     PARTS:
    // Put you code here:
+    // simple ver
+    //Add16(a=in,b[0]=true,out=out);
+
+    // another implement
+    Xor(a=in[0], b=true, out=out[0]);
+    And(a=in[0], b=true, out=flag0);
+
+    Xor(a=in[1], b=flag0, out=out[1]);
+    And(a=in[1], b=flag0, out=flag1);
+
+    Xor(a=in[2], b=flag1, out=out[2]);
+    And(a=in[2], b=flag1, out=flag2);
+
+    Xor(a=in[3], b=flag2, out=out[3]);
+    And(a=in[3], b=flag2, out=flag3);
+
+    Xor(a=in[4], b=flag3, out=out[4]);
+    And(a=in[4], b=flag3, out=flag4);
+
+    Xor(a=in[5], b=flag4, out=out[5]);
+    And(a=in[5], b=flag4, out=flag5);
+
+    Xor(a=in[6], b=flag5, out=out[6]);
+    And(a=in[6], b=flag5, out=flag6);
+
+    Xor(a=in[7], b=flag6, out=out[7]);
+    And(a=in[7], b=flag6, out=flag7);
+
+    Xor(a=in[8], b=flag7, out=out[8]);
+    And(a=in[8], b=flag7, out=flag8);
+
+    Xor(a=in[9], b=flag8, out=out[9]);
+    And(a=in[9], b=flag8, out=flag9);
+
+    Xor(a=in[10], b=flag9, out=out[10]);
+    And(a=in[10], b=flag9, out=flag10);
+
+    Xor(a=in[11], b=flag10, out=out[11]);
+    And(a=in[11], b=flag10, out=flag11);
+
+    Xor(a=in[12], b=flag11, out=out[12]);
+    And(a=in[12], b=flag11, out=flag12);
+
+    Xor(a=in[13], b=flag12, out=out[13]);
+    And(a=in[13], b=flag12, out=flag13);
+
+    Xor(a=in[14], b=flag13, out=out[14]);
+    And(a=in[14], b=flag13, out=flag14);
+
+    Xor(a=in[15], b=flag14, out=out[15]);
+    And(a=in[15], b=flag14, out=flag15);
 }
