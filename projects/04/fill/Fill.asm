@@ -12,3 +12,59 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+	// while(true)	
+(INF_LOOP)
+
+	// tmp = st
+	@SCREEN
+	D=A
+	@tmp
+	M=D
+
+	// if([kbd]==0) fill white
+	// else         fill black
+	@KBD
+	D=M
+	@PRESSED
+	D;JNE
+
+(NOT_PRESSED)
+	// if(tmp==ed) goto INF_LOOP
+	@tmp
+	D=M
+	@24576
+	D=D-A
+	@INF_LOOP
+	D;JEQ
+
+	// *tmp = 0
+	@tmp
+	A=M
+	M=0
+	// tmp = tmp + 1
+	@tmp
+	M=M+1
+
+	@NOT_PRESSED
+	0;JMP
+
+(PRESSED)
+	// if(tmp==ed) goto INF_LOOP
+	@tmp
+	D=M
+	@24576
+	D=D-A
+	@INF_LOOP
+	D;JEQ
+
+	// *tmp = -1
+	@tmp
+	A=M
+	M=-1
+	// tmp = tmp + 1
+	@tmp
+	M=M+1
+
+	@PRESSED
+	0;JMP
