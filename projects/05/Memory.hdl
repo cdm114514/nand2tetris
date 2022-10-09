@@ -1,12 +1,12 @@
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
+// This file is part of www.nAnd2tetris.org
+// And the book "The Elements of Computing Systems"
+// by Nisan And Schocken, MIT Press.
 // File name: projects/05/Memory.hdl
 
 /**
  * The complete address space of the Hack computer's memory,
- * including RAM and memory-mapped I/O. 
- * The chip facilitates read and write operations, as follows:
+ * including RAM And memory-mapped I/O. 
+ * The chip facilitates read And write operations, as follows:
  *     Read:  out(t) = Memory[address(t)](t)
  *     Write: if load(t-1) then Memory[address(t-1)](t) = in(t-1)
  * In words: the chip always outputs the value stored at the memory 
@@ -19,7 +19,7 @@
  * the range 0x4000-0x5FFF results in accessing the screen memory 
  * map. Access to address 0x6000 results in accessing the keyboard 
  * memory map. The behavior in these addresses is described in the 
- * Screen and Keyboard chip specifications given in the book.
+ * Screen And Keyboard chip specifications given in the book.
  */
 
 CHIP Memory {
@@ -28,4 +28,18 @@ CHIP Memory {
 
     PARTS:
     // Put your code here:
+    Not(in=address[14], out=n14);
+    Not(in=address[13], out=n13);
+
+    And(a=load, b=n14, out=selram);
+    
+    And(a=load, b=address[14], out=tmp);
+    And(a=tmp, b=n13, out=selscreen);
+
+    RAM16K(in=in, load=selram, address=address[0..13], out=o1);
+    Screen(in=in, load=selscreen, address=address[0..12], out=o2);
+    Keyboard(out=o3);
+
+    Mux16(a=o2, b=o3, sel=address[13], out=o23);
+    Mux16(a=o1, b=o23, sel=address[14], out=out);
 }
